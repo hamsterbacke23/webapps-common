@@ -60,17 +60,17 @@ export default {
         possibleTabValues() {
             return [{
                 value: 'ports',
-                label: 'Ports',
+                label: this.$i18n.t('nodePage.ports'),
                 icon: PortIcon,
                 disabled: !this.hasPorts
             }, {
                 value: 'node-dialog-options',
-                label: 'Options',
+                label: this.$i18n.t('nodePage.options'),
                 icon: OptionsIcon,
                 disabled: this.options.length === 0
             }, {
                 value: 'views',
-                label: 'Views',
+                label: this.$i18n.t('nodePage.views'),
                 icon: ViewsIcon,
                 disabled: this.views.length === 0
             }];

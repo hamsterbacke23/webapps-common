@@ -47,13 +47,13 @@ export default {
     <PortGroup
       v-if="inPorts.length"
       class="inports"
-      title="Input ports"
+      :title="$t('nodePage.inputPorts')"
       :ports="inPorts"
     />
     <PortGroup
       v-if="outPorts.length"
       class="outports"
-      title="Output ports"
+      :title="$t('nodePage.outputPorts')"
       :ports="outPorts"
     />
     <template v-for="dynPortsGroup in dynInPorts">

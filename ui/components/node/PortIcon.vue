@@ -58,31 +58,32 @@ export default {
             // draw triangle clock-wise
             return `${x1},${y1} ${x2},${0} ${x1},${y3}`;
         },
-        portColor() {
-            return portColors[this.type] || this.color;
-        },
-        fillColor() {
-            return this.filled ? this.portColor : 'transparent';
+        style() {
+            let portColor = portColors[this.type] || this.color;
+
+            return {
+                '--port-color': portColor,
+                stroke: 'var(--port-color)',
+                fill: this.filled ? 'var(--port-color)' : 'transparent'
+            }
         }
     }
 };
 </script>
-
+    
 <template>
   <!-- data table port -->
   <polygon
     v-if="type === 'table'"
     :points="trianglePath"
-    :fill="fillColor"
-    :stroke="portColor"
+    :style="style"
     :stroke-width="strokeWidth"
   />
   <!-- flow variable port -->
   <circle
     v-else-if="type === 'flowVariable'"
     :r="portSize / 2 - strokeWidth / 2"
-    :fill="fillColor"
-    :stroke="portColor"
+    :style="style"
     :stroke-width="strokeWidth"
   />
   <!-- other port -->
@@ -92,8 +93,7 @@ export default {
     :height="portSize - strokeWidth"
     :x="-portSize / 2 + strokeWidth / 2"
     :y="-portSize / 2 + strokeWidth / 2"
-    :fill="fillColor"
-    :stroke="portColor"
+    :style="style"
     :stroke-width="strokeWidth"
   />
 </template>
